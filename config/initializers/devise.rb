@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '5ca63c2cfd3e4004f1a3f706530c249a47fc3b7f3b36dde293671711a43cb9691c618014e681ee59a0e0848ce11626beedba1eb2932a41020e07c102071f2b49'
+  config.secret_key = ENV["SECRET_KEY_BASE"] 
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -97,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'e6f0b0cd84aa146a908ac5ff8bcbbd3025ca7a6278a580c4c8a02b1008b23d586d8a6ee2d2821d94d98c66518dfdd4d80e7ed5c862e793faa4e024dd13a71798'
+  config.pepper = ENV["SECRET_KEY_BASE"]
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -224,7 +224,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :get
+  config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
