@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'therubyracer'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
@@ -26,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'blacklight', ">= 5.3.0"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'devise'
+gem 'responders'
 
 
 # Use ActiveModel has_secure_password
