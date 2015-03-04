@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'blacklight', ">= 5.3.0"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+gem 'devise'
 
 
 # Use ActiveModel has_secure_password

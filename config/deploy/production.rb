@@ -4,7 +4,7 @@ require "rvm/capistrano"
 
 server 'hub.lib.umn.edu', :app, :web, :primary => true
 
-set :rvm_ruby_string, 'ruby-2.1.2@search'
+set :rvm_ruby_string, 'ruby-2.1.5@search'
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
