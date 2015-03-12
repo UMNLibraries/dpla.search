@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 #
 class CatalogController < ApplicationController
-
   include Blacklight::Catalog
+  include HubSearch::SolrHelper::Authorization
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -58,7 +58,12 @@ class CatalogController < ApplicationController
     # facet bar
 
     facets = {
-    "title_ssi" => "Title",
+      "title_ssi" => "Title",
+      "published_bsi" => "Is Published",
+      "tags_ssim" => "Import Job Tags",
+      "import_job_name_ssi" => "Import Job Name",
+      "import_job_id_isi" => "Import Job ID",
+      "ingested_at_dti" => "Injested At",
       "status_ssi" => "Status",
       "intermediateProvider_ssi" => "Provider",
       "language_ssi" => "Language",
@@ -90,6 +95,10 @@ class CatalogController < ApplicationController
     }
 
   facets.each do |field_name, label|
+    config.add_facet_field field_name, :label => label
+  end
+
+  facets.each do |field_name, label|
     config.add_index_field field_name, :label => label
   end
     # Have BL send all facet field names to Solr, which has been the default
@@ -99,10 +108,6 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-
-  facets.each do |field_name, label|
-    config.add_show_field field_name, :label => label
-  end
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -137,16 +142,16 @@ class CatalogController < ApplicationController
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
       field.solr_local_parameters = {
-        :qf => '$title_ssi_qf',
-        :pf => '$title_ssi_pf'
+        :qf => '$title_qf',
+        :pf => '$title_pf'
       }
     end
 
     config.add_search_field('creator_ssi') do |field|
       # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
       field.solr_local_parameters = {
-        :qf => '$creator_ssi_qf',
-        :pf => '$creator_ssi_pf'
+        :qf => '$creator_qf',
+        :pf => '$creator_pf'
       }
     end
 

@@ -11,7 +11,7 @@
 # how to start up solr, generally for automated testing. 
 
 development:
-  url: <%= ENV['ETL_HUB_SOLR_URL'] || "http://127.0.0.1:8885/solr/blacklight-core-hub" %>
+  url: <%= ENV['ETL_HUB_SOLR_URL'] || "http://127.0.0.1:8889/solr/blacklight-core-hub" %>
 test: &test
   url: <%= "http://127.0.0.1:#{ENV['ETL_HUB_TEST_JETTY_PORT'] || 8888}/solr" %>
 production:
