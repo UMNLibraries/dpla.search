@@ -17,7 +17,7 @@ module HubSearch::SolrHelper::Authorization
   def limit_by_user(solr_parameters)
     if !current_user
       solr_parameters['q.alt'] = 'published_bsi:true'
-    elsif current_user.has_role?('admin')
+    elsif current_user.has_one_of_these_roles?(['admin', 'moderator'])
       solr_parameters
     elsif !current_user.authorized_import_job_ids.nil?
       authorized_jobs = current_user.authorized_import_job_ids.split(',').join('OR import_job_id_isi:')
