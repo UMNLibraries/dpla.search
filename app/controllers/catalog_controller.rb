@@ -95,7 +95,7 @@ class CatalogController < ApplicationController
     }
 
   facets.each do |field_name, label|
-    config.add_facet_field field_name, :label => label
+    config.add_facet_field field_name, :label => label, :limit => 20
   end
 
   facets.each do |field_name, label|
