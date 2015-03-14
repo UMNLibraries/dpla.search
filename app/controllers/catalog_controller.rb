@@ -7,7 +7,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
-      :qt => 'search',
+      :qt => 'search_hub',
       :rows => 10
     }
 
@@ -133,7 +133,7 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field('title_ssi') do |field|
+    config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
       # field.solr_parameters = { :'spellcheck.dictionary' => 'title_ssi' }
 
@@ -147,11 +147,19 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('creator_ssi') do |field|
+    config.add_search_field('creator') do |field|
       # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
       field.solr_local_parameters = {
         :qf => '$creator_qf',
         :pf => '$creator_pf'
+      }
+    end
+
+    config.add_search_field('subject') do |field|
+      # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      field.solr_local_parameters = {
+        :qf => '$subject_qf',
+        :pf => '$subject_pf'
       }
     end
 
