@@ -58,11 +58,12 @@ class CatalogController < ApplicationController
     # facet bar
 
     facets = {
-      "title_ssi" => "Title",
-      "published_bsi" => "Is Published",
       "tags_ssim" => "Import Job Tags",
       "import_job_name_ssi" => "Import Job Name",
       "import_job_id_isi" => "Import Job ID",
+      "ham_or_spam_ssi" => "Ham or Spam"
+      "title_ssi" => "Title",
+      "published_bsi" => "Is Published",
       "ingested_at_dti" => "Injested At",
       "status_ssi" => "Status",
       "intermediateProvider_ssi" => "Provider",
