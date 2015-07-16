@@ -56,12 +56,12 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-
+    config.add_facet_field 'ham_fsi', :label => 'Ham', :sort => 'index', :limit => 50
+    config.add_facet_field 'spam_fsi', :label => 'Spam', :sort => 'index', :limit => 50
     facets = {
       "tags_ssim" => "Import Job Tags",
       "import_job_name_ssi" => "Import Job Name",
       "import_job_id_isi" => "Import Job ID",
-      "ham_or_spam_ssi" => "Ham or Spam",
       "title_ssi" => "Title",
       "published_bsi" => "Is Published",
       "ingested_at_dti" => "Injested At",
@@ -102,6 +102,7 @@ class CatalogController < ApplicationController
   facets.each do |field_name, label|
     config.add_index_field field_name, :label => label
   end
+
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
