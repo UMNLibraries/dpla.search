@@ -56,8 +56,8 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'ham_fsi', :label => 'Ham', :sort => 'index', :limit => 50
-    config.add_facet_field 'spam_fsi', :label => 'Spam', :sort => 'index', :limit => 50
+    config.add_facet_field 'ham_fsi', :label => 'Ham Ranking', :sort => 'index', :limit => 50
+    config.add_facet_field 'spam_fsi', :label => 'Spam Ranking', :sort => 'index', :limit => 50
     facets = {
       "tags_ssim" => "Import Job Tags",
       "import_job_name_ssi" => "Import Job Name",
@@ -98,6 +98,9 @@ class CatalogController < ApplicationController
   facets.each do |field_name, label|
     config.add_facet_field field_name, :label => label, :limit => 20
   end
+
+  config.add_index_field 'ham_fsi', :label => 'Ham Ranking'
+  config.add_index_field 'spam_fsi', :label => 'Spam Ranking'
 
   facets.each do |field_name, label|
     config.add_index_field field_name, :label => label
