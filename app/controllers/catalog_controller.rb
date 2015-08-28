@@ -93,7 +93,8 @@ class CatalogController < ApplicationController
       "sourceResource_spatial_region_ssi" => "Region",
       "sourceResource_spatial_state_ssi" => "Stage",
       "sourceResource_physicalMedium_ssi" => "Physical Medium",
-      "sourceResource_type_ssi" => "Type"
+      "sourceResource_type_ssi" => "Type",
+      "sourceResource_rights_ssi" => "Rights"
     }
 
   facets.each do |field_name, label|
