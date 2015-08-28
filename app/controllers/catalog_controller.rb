@@ -34,6 +34,12 @@ class CatalogController < ApplicationController
     config.index.display_type_field = 'sourceResource_type_ssi'
     config.index.thumbnail_field = :object_ssi
 
+    # Override blacklights limit param for facets.
+    # See: def solr_facet_params - blacklight-5.7.2/lib/blacklight/solr_helper.rb
+    def facet_list_limit
+      (params[:limit]) ? params[:limit] : 20
+    end
+
     # solr field configuration for document/show views
     #config.show.title_field = 'title_display'
     #config.show.display_type_field = 'format'
