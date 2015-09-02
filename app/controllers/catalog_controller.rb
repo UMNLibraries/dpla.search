@@ -63,6 +63,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
+    config.add_facet_field 'ham_or_spam_ssi', :label => 'Ham or Spam', :sort => 'index', :limit => 50
     config.add_facet_field 'ham_fsi', :label => 'Ham Ranking', :sort => 'index', :limit => 50
     config.add_facet_field 'spam_fsi', :label => 'Spam Ranking', :sort => 'index', :limit => 50
     facets = {
@@ -109,6 +110,7 @@ class CatalogController < ApplicationController
 
   config.add_index_field 'ham_fsi', :label => 'Ham Ranking'
   config.add_index_field 'spam_fsi', :label => 'Spam Ranking'
+  config.add_index_field 'ham_or_spam_ssi', :label => 'Ham or Spam'
 
   facets.each do |field_name, label|
     config.add_index_field field_name, :label => label
