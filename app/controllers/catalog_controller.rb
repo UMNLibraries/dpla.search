@@ -116,6 +116,9 @@ class CatalogController < ApplicationController
     config.add_index_field field_name, :label => label
   end
 
+
+  config.add_index_field 'sourceResource_description_tesi', :label => 'Description'
+
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
