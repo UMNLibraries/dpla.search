@@ -59,7 +59,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
-  gem 'fontello_rails_converter'
   gem 'rest-client', '~>1.8'
   gem 'quiet_assets'
 end
